@@ -56,8 +56,27 @@ echo "${doubletArray[@]}  counts :>> ${!doubletCount[@]} ${doubletCount[@]} "
 
 
 
+
+#Triplet Simulation
+function simulateTriplet
+{
+declare -a doubletArray
+declare -A doubletCount
+doubletCount[HHH]=0;doubletCount[THH]=0;doubletCount[HTH]=0;doubletCount[HHT]=0;doubletCount[TTT]=0;doubletCount[HTT]=0;doubletCount[THT]=0;doubletCount[TTH]=0;
+for((i=0;i<10;i++))
+do
+        result=$(simulateCombinations 3)
+        doubletArray[$i]=$result
+        ((doubletCount[$result]++))
+done
+
+echo "${doubletArray[@]}  counts :>> ${!doubletCount[@]} ${doubletCount[@]} "
+}
+
+
 #echo $(simulateSinglet)
-echo $(simulateDoublet)
+#echo $(simulateDoublet)
+echo $(simulateTriplet)
 #countH=0
 #countT=0
 #for((i=0;i<50;i++))
